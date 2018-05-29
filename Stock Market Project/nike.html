@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+  <title>NYSE: NKE Stock Market Summary</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Allerta+Stencil">
+
+
+
+
+
+</head>
+
+<body>
+
+  <body>
+    <h1 class="logo">GLOBAL CAST</h1>
+    <!-- navigation menu -->
+    <ul>
+      <li><a href="index.html">| HOME |</a></li>
+      <li><a href="nike.html">| NIKE |</a></li>
+      <li><a href="addidas.html">| ADDIDAS |</a></li>
+      <li><a href="nasdaq.html">| NASDAQ |</a></li>
+      <li><a href="microsoft.html">| MICROSOFT |</a></li>
+      <li><a href="apple.html">| APPLE |</a></li>
+    </ul>
+	<div style="width: 100%;">
+		<canvas id="canvas"></canvas>
+	</div>
+	<br>
+	<br>
+	<button id="switchData">Switch Data From Today (HRS) and Last Week (5 DAYS)</button>
+	<script>
+		var whichone = 0;
+		var firstset = {
+			data: [72.1800, 72.4000, 72.3600, 72.2500],
+			labels: [10, 12, 2, 4, 6, 8]
+		}
+		var secondset = {
+			data: [70.9600, 72.0100, 71.1800, 71.2125, 71.7200],
+			labels: [1, 2, 3, 4, 5]
+		}
+		var config = {
+			type: 'line',
+			data: {
+				labels: firstset.labels,
+				datasets: [{
+					fill: false,
+					borderColor: "#0f9d58",
+					backgroundColor: "#0f9d58",
+					data: firstset.data
+				}]
+			},
+			options: {
+				title: {
+					display: true,
+					text: "Market Summary > Nike Inc | Performance of Stock Market from Today and Five Days Ago"
+        }
+			}
+		};
+
+		window.onload = function() {
+			var ctx = document.getElementById("canvas").getContext("2d");
+			window.myLine = new Chart(ctx, config);
+		};
+
+		document.getElementById('switchData').addEventListener('click', function() {
+			if (whichone === 0) {
+				config.data.datasets[0].data = secondset.data;
+				config.data.labels = secondset.labels;
+				whichone = 1
+			} else {
+				config.data.datasets[0].data = firstset.data;
+				config.data.labels = firstset.labels;
+				whichone = 0
+			}
+
+
+			window.myLine.update();
+		});
+	</script>
+  <div class="footer">
+    <p>Copyright © 2018 Global Cast. All rights reserved</p>
+  </div>
+</body>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.0/Chart.bundle.min.js'></script>
+
+
+
+</body>
+
+</html>
