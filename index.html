@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Stock Market API Project</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Allerta+Stencil">
+    <script src="./js/vue.js"></script>
+  </head>
+  <body>
+    <h1 class="logo">GLOBAL CAST</h1>
+    <!-- navigation menu -->
+    <ul>
+      <li><a href="index.html">| HOME |</a></li>
+      <li><a href="nike.html">| NIKE |</a></li>
+      <li><a href="addidas.html">| ADDIDAS |</a></li>
+      <li><a href="nasdaq.html">| NASDAQ |</a></li>
+      <li><a href="microsoft.html">| MICROSOFT |</a></li>
+      <li><a href="apple.html">| APPLE |</a></li>
+    </ul>
+    <div id="chart1">
+      <h2>THE PERFORMANCE ON<br> ACTIVE STOCKS</h2>
+    </div>
+    <!-- Box of Stock Market Companies with Prices -->
+    <div id="app">
+      <p class="tagline">Sector Performance</p>
+      <p class="shortp">An oversight of all the stocks which give greater insight into the performance of each individual stock</p>
+      <div class="wrapper">
+        <div class="card" v-for="post in postList">
+          <a v-bind:href="post.link" target="_blank">
+            <img v-bind:src="post.img" />
+            <small> Price {{ post.stocks}}</small>
+            {{ post.title }}
+          </a>
+        </div>
+    </div>
+    <div class="footer">
+      <p>Copyright © 2018 Global Cast. All rights reserved</p>
+    </div>
+      <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.9/vue.min.js'></script>
+      <script  src="js/index.js"></script>
+  </body>
+</html>
